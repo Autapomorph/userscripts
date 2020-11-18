@@ -4,7 +4,7 @@
 // @description Redirect directly to target page avoiding Yandex Turbo
 // @description:ru Переадресация на целевую страницу в обход Яндекс Турбо
 // @author Autapomorph
-// @version 1.0.9
+// @version 1.0.10
 // @downloadURL https://github.com/Autapomorph/userscripts/raw/main/avoid-yandex-turbo.user.js
 // @updateURL https://github.com/Autapomorph/userscripts/raw/main/avoid-yandex-turbo.user.js
 // @run-at document_start
@@ -42,7 +42,7 @@
   if (/.+.turbopages.org$/.test(urlHostname)) {
     if (/\.*\/s\/.*/.test(urlPathname)) {
       var sIndex = urlPathname.indexOf('/s/');
-      var host = urlPathname.substring(0, sIndex);
+      var host = urlPathname.substring(1, sIndex);
       var pathName = urlPathname.substring(sIndex + '/s'.length);
       top.location.replace('https://' + host + pathName);
     }
