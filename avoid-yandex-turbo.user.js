@@ -4,7 +4,7 @@
 // @description Redirect directly to target page avoiding Yandex Turbo
 // @description:ru Переадресация на целевую страницу в обход Яндекс Турбо
 // @author Autapomorph
-// @version 1.0.11
+// @version 1.0.12
 // @downloadURL https://github.com/Autapomorph/userscripts/raw/main/avoid-yandex-turbo.user.js
 // @updateURL https://github.com/Autapomorph/userscripts/raw/main/avoid-yandex-turbo.user.js
 // @run-at document_start
@@ -40,15 +40,19 @@
 
   // turbopages.org
   if (/.+.turbopages.org$/.test(urlHostname)) {
-    if (/\.*\/s\/.*/.test(urlPathname)) {
+    if (/\.*\/(s|h)\/.*/.test(urlPathname)) {
       var turboIndex = urlPathname.indexOf('/turbo/');
-      var sIndex = urlPathname.indexOf('/s/');
+      var delimeterIndex = urlPathname.search(/\/(s|h)/);
+      var delimeterLength = 2;
+
+      if (sIndex < 0) return;
+      
       var host =
         turboIndex === -1
           ? urlPathname.substring(1, sIndex)
           : urlPathname.substring(turboIndex + '/turbo/'.length, sIndex);
-      var pathName = urlPathname.substring(sIndex + '/s'.length);
-      top.location.replace('https://' + host + pathName);
+      var pathName = urlPathname.substring(sIndex + delimeterLength);
+      top.location.replace('//' + host + pathName);
     }
 
     return;
@@ -57,12 +61,16 @@
   // yandex.ru
   if (urlPathname === '/turbo') {
     top.location.replace(decodeURIComponent(urlLandingPage['text']));
-  } else if (/\/turbo\/.*\/s\/.*/.test(urlPathname)) {
+  } else if (/\/turbo\/.*\/(s|h)\/.*/.test(urlPathname)) {
     var turboIndex = urlPathname.indexOf('/turbo/');
-    var sIndex = urlPathname.indexOf('/s/');
-    var host = urlPathname.substring(turboIndex + '/turbo/'.length, sIndex);
-    var pathName = urlPathname.substring(sIndex + '/s'.length);
-    top.location.replace('https://' + host + pathName);
+    var delimeterIndex = urlPathname.search(/\/(s|h)/);
+    var delimeterLength = 2;
+
+    if (delimeterIndex < 0) return;
+
+    var host = urlPathname.substring(turboIndex + '/turbo/'.length, delimeterIndex);
+    var pathName = urlPathname.substring(delimeterIndex + delimeterLength);
+    top.location.replace('//' + host + pathName);
   } else if (urlPathname.indexOf('/turbo/s/') !== -1) {
     top.location.replace('https://' + urlPathname.substr(urlPathname.indexOf('/turbo/s/') + 9));
   } else if (urlPathname === '/search/touch/') {
