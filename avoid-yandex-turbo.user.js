@@ -4,7 +4,7 @@
 // @description Redirect directly to target page avoiding Yandex Turbo
 // @description:ru Переадресация на целевую страницу в обход Яндекс Турбо
 // @author Autapomorph
-// @version 2.0.0
+// @version 2.0.1
 // @downloadURL https://github.com/Autapomorph/userscripts/raw/main/avoid-yandex-turbo.user.js
 // @updateURL https://github.com/Autapomorph/userscripts/raw/main/avoid-yandex-turbo.user.js
 // @run-at document_start
@@ -16,28 +16,22 @@
 
 (function () {
   function redirectWithTurboOverlay() {
-    var titleHostActive = $('.turbo-overlay__title-host_active');
-    if (!titleHostActive || !titleHostActive.length) {
+    var titleHostActive = document.querySelector('.turbo-overlay__title-host_active');
+    if (!titleHostActive) {
       return;
     }
 
-    
-    var titleHostActiveText = titleHostActive[0].textContent;
-    if (!titleHostActiveText.length) {
-      return;
-    }
-
-    var hostLinks = $('a[data-sc-host]');
+    var titleHostActiveText = titleHostActive.textContent;
+    var hostLinks = document.querySelectorAll('a[data-sc-host]');
     for (var i = 0; i < hostLinks.length; i += 1) {
-      var hostLink = $(hostLinks[i]);
-      
+      var hostLink = hostLinks[i];
       var dataCounter;
       try {
-        dataCounter = JSON.parse(hostLink.attr('data-counter'));
+        dataCounter = JSON.parse(hostLink.getAttribute('data-counter'));
       } catch (error) {
         return;
       }
-
+      
       if (dataCounter.find(e => e.indexOf(titleHostActiveText) > -1)) {
         var redirect;
         if (dataCounter[0] === 'b') {
@@ -51,22 +45,6 @@
         top.location.replace(redirect);
       }
     }
-
-    $('a[data-sc-host]').each(function () {
-      var dataCounterAttr = $(this).attr('data-counter');
-      if (!dataCounterAttr) return;
-
-      var dataCounter = JSON.parse(dataCounterAttr);
-      if (dataCounter.find(e => e.indexOf(titleHostActiveText) > -1)) {
-        var redirect;
-        if (dataCounter[0] === 'b') {
-          redirect = dataCounter[1];
-        } else if (dataCounter[0] === 'w') {
-          redirect = dataCounter[3];
-        }
-        top.location.replace(redirect);
-      }
-    });
   }
 
   function redirectWithURL() {
