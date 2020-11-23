@@ -3,6 +3,7 @@
 // @name:ru Обход Яндекс Турбо
 // @description Redirect directly to target page avoiding Yandex Turbo
 // @description:ru Переадресация на целевую страницу в обход Яндекс Турбо
+// @namespace https://github.com/Autapomorph/userscripts
 // @author Autapomorph
 // @version 3.0.1
 // @downloadURL https://github.com/Autapomorph/userscripts/raw/main/src/avoid-yandex-turbo.user.js
