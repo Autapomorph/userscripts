@@ -3,6 +3,7 @@
 // @name:ru Поиск DuckDuckGo на Яндексе
 // @description Places a button to search with DuckDuckGo on Yandex search page
 // @description:ru Добавляет кнопку поиска на DuckDuckGo к выдаче Яндекса
+// @namespace https://github.com/Autapomorph/userscripts
 // @author Autapomorph
 // @version 2.0.0
 // @downloadURL https://github.com/Autapomorph/userscripts/raw/main/src/yandex-ddg.user.js
