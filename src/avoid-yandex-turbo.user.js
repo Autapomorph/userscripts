@@ -5,7 +5,7 @@
 // @description:ru Переадресация на целевую страницу в обход Яндекс Турбо
 // @namespace https://github.com/Autapomorph/userscripts
 // @author Autapomorph
-// @version 3.0.1
+// @version 3.1.0
 // @downloadURL https://github.com/Autapomorph/userscripts/raw/main/src/avoid-yandex-turbo.user.js
 // @updateURL https://github.com/Autapomorph/userscripts/raw/main/src/avoid-yandex-turbo.user.js
 // @run-at document_start
@@ -60,9 +60,20 @@
     top.location.replace(`//${host}${pathName}`);
   }
 
-  const urlPathname = top.location.pathname;
-  if (/\.*\/(s|h)\/.*/.test(urlPathname)) {
-    redirectWithTurboOverlay();
-    redirectWithURL();
+  function main(urlPathname) {
+    if (/\.*\/(s|h)\/.*/.test(urlPathname)) {
+      redirectWithTurboOverlay();
+      redirectWithURL();
+    }
   }
+
+  let currentURLPathname = top.location.pathname;
+  setInterval(() => {
+    if (currentURLPathname !== top.location.pathname) {
+      currentURLPathname = top.location.pathname;
+      main(currentURLPathname);
+    }
+  }, 1000);
+
+  main(currentURLPathname);
 })();
