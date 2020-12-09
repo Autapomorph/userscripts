@@ -11,7 +11,7 @@
 // @run-at document_start
 // @match *://yandex.ru/*
 // @match *://*.turbopages.org/*
-// @supportURL https://github.com/Autapomorph/userscripts/issues
+// @supportURL https://github.com/Autapomorph/userscripts/discussions
 // @license MIT
 // ==/UserScript==
 
