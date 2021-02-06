@@ -44,8 +44,7 @@
     }
   }
 
-  function redirectWithURL() {
-    const urlPathname = top.location.pathname;
+  function redirectWithURLPathname(urlPathname) {
     const turboIndex = urlPathname.indexOf('/turbo/');
     const delimeterIndex = urlPathname.search(/\/(s|h)\//);
     const delimeterLength = 2;
@@ -60,10 +59,30 @@
     top.location.replace(`//${host}${pathName}`);
   }
 
-  function main(urlPathname) {
+  function redirectWithURLSearchParam(urlSearchParams) {
+    const textQuery = urlSearchParams.get('text');
+    if (textQuery) {
+      top.location.replace(textQuery);
+    }
+  }
+
+  function main() {
+    const urlPathname = top.location.pathname;
+    const urlSearchParams = new URLSearchParams(top.location.search);
+
+    if (!urlPathname.includes('turbo')) {
+      return;
+    }
+
+    redirectWithTurboOverlay();
+
     if (/\.*\/(s|h)\/.*/.test(urlPathname)) {
-      redirectWithTurboOverlay();
-      redirectWithURL();
+      redirectWithURLPathname(urlPathname);
+      return;
+    }
+
+    if (urlSearchParams.has('text')) {
+      redirectWithURLSearchParam(urlSearchParams);
     }
   }
 
@@ -71,9 +90,9 @@
   setInterval(() => {
     if (currentURLPathname !== top.location.pathname) {
       currentURLPathname = top.location.pathname;
-      main(currentURLPathname);
+      main();
     }
   }, 1000);
 
-  main(currentURLPathname);
+  main();
 })();
