@@ -30,6 +30,11 @@
     "redirect": false
   },
   {
+    "name": "yandex video preview",
+    "url": "https://yandex.ru/video/preview/?text=text",
+    "redirect": false
+  },
+  {
     "name": "yandex health",
     "url": "https://yandex.ru/health/turbo/articles?id=0",
     "redirect": false

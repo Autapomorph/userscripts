@@ -66,23 +66,29 @@
     }
   }
 
+  function isTurboPage(urlHostname, urlPathname, urlSearchParams) {
+    // turbopages.org
+    if (/\.turbopages.org/.test(urlHostname)) return true;
+
+    // yandex.ru
+    if (/yandex.ru/.test(urlHostname) && urlPathname.includes('/turbo/')) {
+      if (/\.*\/(s|h)\/.*/.test(urlPathname) || urlSearchParams.has('text')) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   function main() {
+    const urlHostname = top.location.hostname;
     const urlPathname = top.location.pathname;
     const urlSearchParams = new URLSearchParams(top.location.search);
 
-    if (urlPathname.includes('search')) {
-      return;
-    }
-
+    if (!isTurboPage(urlHostname, urlPathname, urlSearchParams)) return;
     redirectWithTurboOverlay();
-
-    if (/\.*\/(s|h)\/.*/.test(urlPathname)) {
-      redirectWithURLPathname(urlPathname);
-    }
-
-    if (urlSearchParams.has('text')) {
-      redirectWithURLSearchParam(urlSearchParams);
-    }
+    redirectWithURLPathname(urlPathname);
+    redirectWithURLSearchParam(urlSearchParams);
   }
 
   let currentURLPathname = top.location.pathname;
