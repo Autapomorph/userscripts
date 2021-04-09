@@ -70,6 +70,10 @@
     const urlPathname = top.location.pathname;
     const urlSearchParams = new URLSearchParams(top.location.search);
 
+    if (urlPathname.includes('search')) {
+      return;
+    }
+    
     redirectWithTurboOverlay();
 
     if (/\.*\/(s|h)\/.*/.test(urlPathname)) {
