@@ -73,7 +73,7 @@
     if (urlPathname.includes('search')) {
       return;
     }
-    
+
     redirectWithTurboOverlay();
 
     if (/\.*\/(s|h)\/.*/.test(urlPathname)) {

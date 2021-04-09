@@ -1,0 +1,37 @@
+[
+  {
+    "name": "yandex with turbo",
+    "url": "https://yandex.ru/turbo/target.com/s/path/to/smth",
+    "redirect": true
+  },
+  {
+    "name": "turbopages with turbo",
+    "url": "https://target-com.turbopages.org/turbo/target.com/s/path/to/smth",
+    "redirect": true
+  },
+  {
+    "name": "turbopages without turbo",
+    "url": "https://target-com.turbopages.org/target.com/s/path/to/smth?turbo_uid=uid",
+    "redirect": true
+  },
+  {
+    "name": "yandex main page",
+    "url": "https://yandex.ru",
+    "redirect": false
+  },
+  {
+    "name": "yandex search page",
+    "url": "https://yandex.ru/search/?text=search",
+    "redirect": false
+  },
+  {
+    "name": "yandex search page with turbo word",
+    "url": "https://yandex.ru/search/?text=turbo",
+    "redirect": false
+  },
+  {
+    "name": "yandex health",
+    "url": "https://yandex.ru/health/turbo/articles?id=0",
+    "redirect": false
+  }
+]
