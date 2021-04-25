@@ -91,7 +91,7 @@
     redirectWithURLSearchParam(urlSearchParams);
   }
 
-  if (exports) {
+  if (typeof module === 'object' && module.exports) {
     module.exports = {
       avoidYandexTurbo,
       main,
