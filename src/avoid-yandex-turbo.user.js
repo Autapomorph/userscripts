@@ -71,7 +71,7 @@
     if (/\.turbopages.org/.test(urlHostname)) return true;
 
     // yandex.ru
-    if (/yandex.ru/.test(urlHostname) && urlPathname.includes('/turbo/')) {
+    if (/yandex.ru/.test(urlHostname) && urlPathname.includes('/turbo')) {
       if (/\.*\/(s|h)\/.*/.test(urlPathname) || urlSearchParams.has('text')) {
         return true;
       }
