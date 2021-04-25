@@ -91,6 +91,18 @@
     redirectWithURLSearchParam(urlSearchParams);
   }
 
+  if (exports) {
+    module.exports = {
+      avoidYandexTurbo,
+      main,
+      isTurboPage,
+      redirectWithTurboOverlay,
+      redirectWithURLPathname,
+      redirectWithURLSearchParam,
+    };
+    return;
+  }
+
   let currentURLPathname = top.location.pathname;
   setInterval(() => {
     if (currentURLPathname !== top.location.pathname) {

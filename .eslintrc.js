@@ -4,6 +4,7 @@ module.exports = {
   },
   env: {
     browser: true,
+    jest: true,
   },
   extends: ['airbnb-base', 'plugin:prettier/recommended'],
   rules: {
