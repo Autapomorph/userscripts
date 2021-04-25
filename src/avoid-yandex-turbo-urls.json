@@ -1,16 +1,21 @@
 [
   {
-    "name": "yandex with turbo",
+    "name": "yandex with '/turbo/*/s/'",
     "url": "https://yandex.ru/turbo/target.com/s/path/to/smth",
     "redirect": true
   },
   {
-    "name": "turbopages with turbo",
+    "name": "yandex with '/turbo?text='",
+    "url": "https://yandex.ru/turbo?text=https://target.com/path/to/smth",
+    "redirect": true
+  },
+  {
+    "name": "turbopages.org with '/turbo/*/s/'",
     "url": "https://target-com.turbopages.org/turbo/target.com/s/path/to/smth",
     "redirect": true
   },
   {
-    "name": "turbopages without turbo",
+    "name": "turbopages.org with '/s/'",
     "url": "https://target-com.turbopages.org/target.com/s/path/to/smth?turbo_uid=uid",
     "redirect": true
   },
@@ -25,7 +30,7 @@
     "redirect": false
   },
   {
-    "name": "yandex search page with turbo word",
+    "name": "yandex search page with 'turbo' word",
     "url": "https://yandex.ru/search/?text=turbo",
     "redirect": false
   },
