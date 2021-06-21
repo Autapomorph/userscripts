@@ -22,7 +22,7 @@
     quality: 1080,
     volume: {
       volume: 100,
-      mute: true,
+      muted: true,
     },
     ...existingPlayerItemValue,
   };
