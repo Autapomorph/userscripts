@@ -1,22 +1,26 @@
 {
   "name": "userscripts",
   "version": "1.0.0",
-  "scripts": {
-    "test": "jest",
-    "lint": "eslint ."
-  },
+  "description": "Collection of userscripts for Greasy Fork",
+  "private": true,
+  "keywords": [
+    "userscript"
+  ],
+  "author": "Autapomorph (https://github.com/Autapomorph)",
+  "homepage": "https://github.com/Autapomorph/userscripts#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Autapomorph/userscripts.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
   "bugs": {
     "url": "https://github.com/Autapomorph/userscripts/issues"
   },
-  "homepage": "https://github.com/Autapomorph/userscripts#readme",
+  "license": "MIT",
+  "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ."
+  },
   "devDependencies": {
     "eslint": "^7.28.0",
     "eslint-config-airbnb-base": "^14.2.1",
