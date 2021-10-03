@@ -110,5 +110,15 @@ describe('Avoid Yandex Turbo', () => {
 
       expect(location.replace).not.toBeCalled();
     });
+
+    it('yandex health turbo inline', () => {
+      const url =
+        'https://yandex.ru/turbo?text=https%3A%2F%2Fhealth.yandex.ru%2Fdiseases%2Fdisease';
+      prepareLocationWithURL(url);
+
+      main();
+
+      expect(location.replace).not.toBeCalled();
+    });
   });
 });

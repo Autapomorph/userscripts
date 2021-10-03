@@ -72,7 +72,16 @@
 
     // yandex.ru
     if (/yandex.ru/.test(urlHostname) && urlPathname.includes('/turbo')) {
-      if (/\.*\/(s|h)\/.*/.test(urlPathname) || urlSearchParams.has('text')) {
+      if (/\.*\/(s|h)\/.*/.test(urlPathname)) {
+        return true;
+      }
+
+      if (urlSearchParams.has('text')) {
+        // Do not redirect Yandex Health Turbo inline
+        if (urlSearchParams.get('text').includes('health.yandex.ru')) {
+          return false;
+        }
+
         return true;
       }
     }
