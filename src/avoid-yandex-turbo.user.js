@@ -5,7 +5,7 @@
 // @description:ru Переадресация на целевую страницу в обход Яндекс Турбо
 // @namespace https://github.com/Autapomorph/userscripts
 // @author Autapomorph
-// @version 3.2.5
+// @version 3.3.0
 // @downloadURL https://github.com/Autapomorph/userscripts/raw/main/src/avoid-yandex-turbo.user.js
 // @updateURL https://github.com/Autapomorph/userscripts/raw/main/src/avoid-yandex-turbo.user.js
 // @run-at document_start
