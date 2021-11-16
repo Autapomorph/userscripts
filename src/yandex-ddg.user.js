@@ -21,15 +21,15 @@
   const input = document.querySelector('.input__control');
   if (!input) return;
 
-  const competitorsList = document.querySelector('.competitors__list');
-  if (!competitorsList) return;
+  const searchengineList = document.querySelector('.searchengines .searchengines__list');
+  if (!searchengineList) return;
 
-  const googleLink = competitorsList.querySelector('a[href*="google"]');
+  const googleLink = searchengineList.querySelector('a[href*="google"]');
   if (!googleLink) return;
 
   const searchTerm = input.value;
   const ddgLink = googleLink.cloneNode(true);
   ddgLink.textContent = 'DuckDuckGo';
   ddgLink.setAttribute('href', `//duckduckgo.com/?q=${searchTerm}`);
-  competitorsList.appendChild(ddgLink);
+  searchengineList.appendChild(ddgLink);
 })();
