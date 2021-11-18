@@ -21,7 +21,10 @@
   const input = document.querySelector('.input__control');
   if (!input) return;
 
-  const searchengineList = document.querySelector('.searchengines .searchengines__list');
+  let searchengineList = document.querySelector('.searchengines .searchengines__list');
+  if (!searchengineList)
+    searchengineList = document.querySelector('.LinksItem[data-vnl*="searchengines"]');
+
   if (!searchengineList) return;
 
   const googleLink = searchengineList.querySelector('a[href*="google"]');
