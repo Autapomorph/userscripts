@@ -9,7 +9,7 @@
 // @downloadURL https://github.com/Autapomorph/userscripts/raw/main/src/yandex-ddg.user.js
 // @updateURL https://github.com/Autapomorph/userscripts/raw/main/src/yandex-ddg.user.js
 // @run-at document_end
-// @match https://yandex.ru/*
+// @match https://yandex.tld/*
 // @supportURL https://github.com/Autapomorph/userscripts/discussions
 // @license MIT
 // ==/UserScript==
