@@ -15,44 +15,48 @@ describe('Avoid Yandex Turbo', () => {
   });
 
   describe('Should redirect', () => {
-    it('yandex with "/turbo/*/s/"', () => {
-      const url = 'https://yandex.ru/turbo/target.com/s/path/to/smth';
-      const target = '//target.com/path/to/smth';
-      prepareLocationWithURL(url);
+    describe('Yandex', () => {
+      it('yandex with "/turbo/*/s/"', () => {
+        const url = 'https://yandex.ru/turbo/target.com/s/path/to/smth';
+        const target = '//target.com/path/to/smth';
+        prepareLocationWithURL(url);
 
-      main();
+        main();
 
-      expect(location.replace).toBeCalledWith(target);
+        expect(location.replace).toBeCalledWith(target);
+      });
+
+      it('yandex with "/turbo?text="', () => {
+        const url = 'https://yandex.ru/turbo?text=https://target.com/path/to/smth';
+        const target = 'https://target.com/path/to/smth';
+        prepareLocationWithURL(url);
+
+        main();
+
+        expect(location.replace).toBeCalledWith(target);
+      });
     });
 
-    it('yandex with "/turbo?text="', () => {
-      const url = 'https://yandex.ru/turbo?text=https://target.com/path/to/smth';
-      const target = 'https://target.com/path/to/smth';
-      prepareLocationWithURL(url);
+    describe('Turbopages', () => {
+      it('turbopages.org with "/turbo/*/s/"', () => {
+        const url = 'https://target-com.turbopages.org/turbo/target.com/s/path/to/smth';
+        const target = '//target.com/path/to/smth';
+        prepareLocationWithURL(url);
 
-      main();
+        main();
 
-      expect(location.replace).toBeCalledWith(target);
-    });
+        expect(location.replace).toBeCalledWith(target);
+      });
 
-    it('turbopages.org with "/turbo/*/s/"', () => {
-      const url = 'https://target-com.turbopages.org/turbo/target.com/s/path/to/smth';
-      const target = '//target.com/path/to/smth';
-      prepareLocationWithURL(url);
+      it('turbopages.org with "/s/"', () => {
+        const url = 'https://target-com.turbopages.org/target.com/s/path/to/smth?turbo_uid=uid';
+        const target = '//target.com/path/to/smth';
+        prepareLocationWithURL(url);
 
-      main();
+        main();
 
-      expect(location.replace).toBeCalledWith(target);
-    });
-
-    it('turbopages.org with "/s/"', () => {
-      const url = 'https://target-com.turbopages.org/target.com/s/path/to/smth?turbo_uid=uid';
-      const target = '//target.com/path/to/smth';
-      prepareLocationWithURL(url);
-
-      main();
-
-      expect(location.replace).toBeCalledWith(target);
+        expect(location.replace).toBeCalledWith(target);
+      });
     });
   });
 

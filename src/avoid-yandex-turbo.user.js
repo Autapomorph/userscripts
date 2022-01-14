@@ -9,8 +9,7 @@
 // @downloadURL https://github.com/Autapomorph/userscripts/raw/main/src/avoid-yandex-turbo.user.js
 // @updateURL https://github.com/Autapomorph/userscripts/raw/main/src/avoid-yandex-turbo.user.js
 // @run-at document_start
-// @match *://yandex.ru/*
-// @match *://yandex.ua/*
+// @match *://yandex.tld/*
 // @match *://*.turbopages.org/*
 // @supportURL https://github.com/Autapomorph/userscripts/discussions
 // @license MIT
@@ -19,8 +18,10 @@
 (function avoidYandexTurbo() {
   const checkIntervalMs = 1000;
 
-  const yandexDnsZones = ['ru', 'ua'];
-  const yandexDnsZonesRegexAlternatives = yandexDnsZones.join('|');
+  const domainRegex = {
+    turbopages: /\.turbopages\.org/,
+    yandex: /yandex\..+/,
+  };
 
   function redirectWithTurboOverlay() {
     const titleHostActive = document.querySelector('.turbo-overlay__title-host_active');
@@ -74,26 +75,19 @@
 
   function isTurboPage(urlHostname, urlPathname, urlSearchParams) {
     // Turbopages domain
-    if (/\.turbopages.org/.test(urlHostname)) {
+    if (domainRegex.turbopages.test(urlHostname)) {
       return true;
     }
 
     // Yandex domains
-    if (
-      new RegExp(`yandex.(${yandexDnsZonesRegexAlternatives})`).test(urlHostname) &&
-      urlPathname.includes('/turbo')
-    ) {
+    if (domainRegex.yandex.test(urlHostname) && urlPathname.includes('/turbo')) {
       if (/\.*\/(s|h)\/.*/.test(urlPathname)) {
         return true;
       }
 
       if (urlSearchParams.has('text')) {
         // Do not redirect Yandex Health Turbo inline
-        if (
-          new RegExp(`health.yandex.(${yandexDnsZonesRegexAlternatives})`).test(
-            urlSearchParams.get('text'),
-          )
-        ) {
+        if (domainRegex.yandex.test(urlSearchParams.get('text'))) {
           return false;
         }
 
