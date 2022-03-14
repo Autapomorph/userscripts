@@ -23,7 +23,7 @@
 
   let searchengineList = document.querySelector('.searchengines .searchengines__list');
   if (!searchengineList)
-    searchengineList = document.querySelector('.LinksItem[data-vnl*="searchengines"]');
+    searchengineList = document.querySelector('.SerpFooterLinksGroup_type_searchengines');
 
   if (!searchengineList) return;
 
