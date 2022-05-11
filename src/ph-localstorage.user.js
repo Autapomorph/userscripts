@@ -5,7 +5,7 @@
 // @description:ru Отключает автовоспроизведение, устанавливает качество 1080p, заглушает звук
 // @namespace https://github.com/Autapomorph/userscripts
 // @author Autapomorph
-// @version 1.0.1
+// @version 1.0.2
 // @downloadURL https://github.com/Autapomorph/userscripts/raw/main/src/ph-localstorage.user.js
 // @updateURL https://github.com/Autapomorph/userscripts/raw/main/src/ph-localstorage.user.js
 // @run-at document_end
