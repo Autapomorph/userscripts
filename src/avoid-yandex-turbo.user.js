@@ -23,6 +23,33 @@
     yandex: /yandex\..+/,
   };
 
+  function redirectWithTurboScript() {
+    const turboScriptSelector = 'script[data-name="post-message"][data-message]';
+    const turboScript = document.querySelector(turboScriptSelector);
+    if (!turboScript) {
+      return;
+    }
+
+    const dataMessage = turboScript.getAttribute('data-message');
+    if (typeof dataMessage !== 'string') {
+      return;
+    }
+
+    let redirectTo;
+    try {
+      const dataMessageJson = JSON.parse(dataMessage);
+      if (dataMessageJson && dataMessageJson.originalUrl) {
+        redirectTo = dataMessageJson.originalUrl;
+      }
+    } catch (error) {
+      return;
+    }
+
+    if (redirectTo) {
+      top.location.replace(redirectTo);
+    }
+  }
+
   function redirectWithTurboOverlay() {
     const titleHostActive = document.querySelector('.turbo-overlay__title-host_active');
     if (!titleHostActive) return;
@@ -39,14 +66,14 @@
       }
 
       if (dataCounter.find(e => e.indexOf(titleHostActiveText) > -1)) {
-        let redirect;
+        let redirectTo;
         if (dataCounter[0] === 'b') {
-          redirect = dataCounter[1];
+          redirectTo = dataCounter[1];
         } else if (dataCounter[0] === 'w') {
-          redirect = dataCounter[3];
+          redirectTo = dataCounter[3];
         } else return;
 
-        top.location.replace(redirect);
+        top.location.replace(redirectTo);
       }
     }
   }
@@ -103,7 +130,11 @@
     const urlPathname = top.location.pathname;
     const urlSearchParams = new URLSearchParams(top.location.search);
 
-    if (!isTurboPage(urlHostname, urlPathname, urlSearchParams)) return;
+    if (!isTurboPage(urlHostname, urlPathname, urlSearchParams)) {
+      return;
+    }
+
+    redirectWithTurboScript();
     redirectWithTurboOverlay();
     redirectWithURLPathname(urlPathname);
     redirectWithURLSearchParam(urlSearchParams);
@@ -114,10 +145,12 @@
       avoidYandexTurbo,
       main,
       isTurboPage,
+      redirectWithTurboScript,
       redirectWithTurboOverlay,
       redirectWithURLPathname,
       redirectWithURLSearchParam,
     };
+
     return;
   }
 
