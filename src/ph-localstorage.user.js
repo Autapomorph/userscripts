@@ -19,7 +19,10 @@
   const existingPlayerItemValue = JSON.parse(localStorage.getItem(playerItemKey)) || {};
   const playerItemValue = {
     autoplay: false,
-    quality: 1080,
+    quality: {
+      auto: false,
+      quality: 1080,
+    },
     volume: {
       volume: 100,
       muted: true,
