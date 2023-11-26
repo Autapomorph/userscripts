@@ -5,7 +5,7 @@
 // @description:ru Добавляет кнопку поиска на DuckDuckGo к выдаче Яндекса
 // @namespace https://github.com/Autapomorph/userscripts
 // @author Autapomorph
-// @version 2.1.1
+// @version 2.1.2
 // @downloadURL https://github.com/Autapomorph/userscripts/raw/main/src/yandex-ddg.user.js
 // @updateURL https://github.com/Autapomorph/userscripts/raw/main/src/yandex-ddg.user.js
 // @run-at document_end
