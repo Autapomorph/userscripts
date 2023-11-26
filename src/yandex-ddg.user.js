@@ -16,23 +16,29 @@
 
 (function yandexDDG() {
   const urlPathname = top.location.pathname;
-  if (urlPathname.indexOf('/search') === -1) return;
+  if (urlPathname.indexOf('/search') === -1) {
+    return;
+  }
 
-  const input = document.querySelector('.input__control');
-  if (!input) return;
+  const input = document.querySelector('input');
+  if (!input) {
+    return;
+  }
 
-  let searchengineList = document.querySelector('.searchengines .searchengines__list');
-  if (!searchengineList)
-    searchengineList = document.querySelector('.SerpFooterLinksGroup_type_searchengines');
+  const searchEngineList = document.querySelector('.SerpFooter-LinksGroup_type_searchengines');
 
-  if (!searchengineList) return;
+  if (!searchEngineList) {
+    return;
+  }
 
-  const googleLink = searchengineList.querySelector('a[href*="google"]');
-  if (!googleLink) return;
+  const googleLink = searchEngineList.querySelector('a[href*="google"]');
+  if (!googleLink) {
+    return;
+  }
 
   const searchTerm = input.value;
   const ddgLink = googleLink.cloneNode(true);
   ddgLink.textContent = 'DuckDuckGo';
   ddgLink.setAttribute('href', `//duckduckgo.com/?q=${searchTerm}`);
-  searchengineList.appendChild(ddgLink);
+  searchEngineList.appendChild(ddgLink);
 })();
