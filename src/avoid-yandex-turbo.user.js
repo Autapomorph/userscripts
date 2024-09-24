@@ -41,7 +41,7 @@
       if (dataMessageJson && dataMessageJson.originalUrl) {
         redirectTo = dataMessageJson.originalUrl;
       }
-    } catch (error) {
+    } catch {
       return;
     }
 
@@ -61,7 +61,7 @@
       let dataCounter;
       try {
         dataCounter = JSON.parse(hostLink.getAttribute('data-counter'));
-      } catch (error) {
+      } catch {
         return;
       }
 
