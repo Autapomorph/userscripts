@@ -10,6 +10,7 @@
 // @updateURL https://github.com/Autapomorph/userscripts/raw/main/src/avoid-steam-oops-sorry.user.js
 // @run-at document_start
 // @match https://store.steampowered.com/app/*
+// @match https://store.steampowered.com/news/app/*
 // @match https://store.steampowered.com/sub/*
 // @match https://store.steampowered.com/bundle/*
 // @supportURL https://github.com/Autapomorph/userscripts/discussions
@@ -29,6 +30,7 @@
   const appUrlPath = 'app';
   const subUrlPath = 'sub';
   const bundleUrlPath = 'bundle';
+  const newsUrlPath = 'news';
 
   const countryCodeSearchParam = 'cc';
   const birthtimeCookieName = 'birthtime';
@@ -69,6 +71,7 @@
     links.forEach(link => {
       if (
         link.href.includes(`${steamStoreBaseUrl}/${appUrlPath}/`) ||
+        link.href.includes(`${steamStoreBaseUrl}/${newsUrlPath}/${appUrlPath}/`) ||
         link.href.includes(`${steamStoreBaseUrl}/${subUrlPath}/`) ||
         link.href.includes(`${steamStoreBaseUrl}/${bundleUrlPath}/`)
       ) {
