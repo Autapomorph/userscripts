@@ -5,7 +5,7 @@
 // @description:ru Переадресация на целевую страницу в обход "Ой, извините!"
 // @namespace https://github.com/Autapomorph/userscripts
 // @author Autapomorph
-// @version 1.0.0
+// @version 1.0.1
 // @downloadURL https://github.com/Autapomorph/userscripts/raw/main/src/avoid-steam-oops-sorry.user.js
 // @updateURL https://github.com/Autapomorph/userscripts/raw/main/src/avoid-steam-oops-sorry.user.js
 // @run-at document_start
