@@ -27,6 +27,10 @@
       volume: 100,
       muted: true,
     },
+    closedCaptions: {
+      lang: 'en',
+      visible: false,
+    },
     ...existingPlayerItemValue,
   };
   localStorage.setItem(playerItemKey, JSON.stringify(playerItemValue));
