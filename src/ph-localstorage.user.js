@@ -10,6 +10,7 @@
 // @updateURL https://github.com/Autapomorph/userscripts/raw/main/src/ph-localstorage.user.js
 // @run-at document_end
 // @match https://*.pornhub.com/*
+// @match https://*.pornhub.org/*
 // @supportURL https://github.com/Autapomorph/userscripts/discussions
 // @license MIT
 // ==/UserScript==
