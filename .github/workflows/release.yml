@@ -1,0 +1,63 @@
+name: Release Userscripts
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Tag / Release version (e.g. v1.0.0)'
+        required: true
+        type: string
+      title:
+        description: 'Release title (optional)'
+        required: false
+        type: string
+      prerelease:
+        description: 'Mark as pre-release'
+        required: false
+        type: boolean
+        default: false
+  release:
+    types: [published]
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build Userscripts
+        run: npm run build
+
+      - name: Create GitHub Release & Upload Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.version || github.ref_name }}
+          name: ${{ inputs.title || inputs.version || github.ref_name }}
+          prerelease: ${{ inputs.prerelease || false }}
+          generate_release_notes: true
+          files: dist/*.user.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

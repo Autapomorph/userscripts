@@ -1,17 +1,26 @@
-const { main } = require('./avoid-yandex-turbo.user');
+import { main } from './avoid-yandex-turbo';
 
 describe('Avoid Yandex Turbo', () => {
   const defaultLocation = window.location;
 
-  const prepareLocationWithURL = url => {
-    delete top.location;
-    const location = new URL(url);
-    location.replace = jest.fn();
-    top.location = location;
+  const prepareLocationWithURL = (url: string): void => {
+    // Using Object.defineProperty to safely mock window.location and top.location
+    const mockLocation = new URL(url) as unknown as Location;
+    mockLocation.replace = jest.fn();
+
+    Object.defineProperty(window, 'location', {
+      value: mockLocation,
+      writable: true,
+      configurable: true,
+    });
   };
 
   afterAll(() => {
-    window.location = defaultLocation;
+    Object.defineProperty(window, 'location', {
+      value: defaultLocation,
+      writable: true,
+      configurable: true,
+    });
   });
 
   describe('Should redirect', () => {
@@ -23,7 +32,7 @@ describe('Avoid Yandex Turbo', () => {
 
         main();
 
-        expect(location.replace).toBeCalledWith(target);
+        expect(window.location.replace).toHaveBeenCalledWith(target);
       });
 
       it('yandex with "/turbo?text="', () => {
@@ -33,7 +42,7 @@ describe('Avoid Yandex Turbo', () => {
 
         main();
 
-        expect(location.replace).toBeCalledWith(target);
+        expect(window.location.replace).toHaveBeenCalledWith(target);
       });
     });
 
@@ -45,7 +54,7 @@ describe('Avoid Yandex Turbo', () => {
 
         main();
 
-        expect(location.replace).toBeCalledWith(target);
+        expect(window.location.replace).toHaveBeenCalledWith(target);
       });
 
       it('turbopages.org with "/s/"', () => {
@@ -55,7 +64,7 @@ describe('Avoid Yandex Turbo', () => {
 
         main();
 
-        expect(location.replace).toBeCalledWith(target);
+        expect(window.location.replace).toHaveBeenCalledWith(target);
       });
     });
   });
@@ -67,7 +76,7 @@ describe('Avoid Yandex Turbo', () => {
 
       main();
 
-      expect(location.replace).not.toBeCalled();
+      expect(window.location.replace).not.toHaveBeenCalled();
     });
 
     it('yandex search page', () => {
@@ -76,7 +85,7 @@ describe('Avoid Yandex Turbo', () => {
 
       main();
 
-      expect(location.replace).not.toBeCalled();
+      expect(window.location.replace).not.toHaveBeenCalled();
     });
 
     it('yandex search page with "turbo" search term', () => {
@@ -85,7 +94,7 @@ describe('Avoid Yandex Turbo', () => {
 
       main();
 
-      expect(location.replace).not.toBeCalled();
+      expect(window.location.replace).not.toHaveBeenCalled();
     });
 
     it('yandex search page with "turbo/s" search term', () => {
@@ -94,7 +103,7 @@ describe('Avoid Yandex Turbo', () => {
 
       main();
 
-      expect(location.replace).not.toBeCalled();
+      expect(window.location.replace).not.toHaveBeenCalled();
     });
 
     it('yandex video preview', () => {
@@ -103,7 +112,7 @@ describe('Avoid Yandex Turbo', () => {
 
       main();
 
-      expect(location.replace).not.toBeCalled();
+      expect(window.location.replace).not.toHaveBeenCalled();
     });
 
     it('yandex health', () => {
@@ -112,7 +121,7 @@ describe('Avoid Yandex Turbo', () => {
 
       main();
 
-      expect(location.replace).not.toBeCalled();
+      expect(window.location.replace).not.toHaveBeenCalled();
     });
 
     it('yandex health turbo inline', () => {
@@ -122,7 +131,7 @@ describe('Avoid Yandex Turbo', () => {
 
       main();
 
-      expect(location.replace).not.toBeCalled();
+      expect(window.location.replace).not.toHaveBeenCalled();
     });
   });
 });
