@@ -10,7 +10,7 @@ Collection of high-quality Userscripts written in **TypeScript** for Tampermonke
 | :-------------------------------- | :----------------------------------------------------------------------------------------- | :-----: | :-----------------------------------------------------------------------------------------------------------: |
 | **Avoid Steam "Oops, Sorry!"**    | Redirects to target page avoiding Steam "Oops, Sorry!" age/region check error pages.       | `1.0.1` | [Install](https://github.com/Autapomorph/userscripts/releases/latest/download/avoid-steam-oops-sorry.user.js) |
 | **Yandex to DuckDuckGo**          | Adds a DuckDuckGo search button directly into Yandex search results.                       | `2.1.3` |       [Install](https://github.com/Autapomorph/userscripts/releases/latest/download/yandex-ddg.user.js)       |
-| **YouTube Video Autofocus**       | Automatically focuses the YouTube video player on watch pages to enable hotkeys instantly. | `1.0.0` |   [Install](https://github.com/Autapomorph/userscripts/releases/latest/download/yt-video-autofocus.user.js)   |
+| **YouTube Video Autofocus**       | Automatically focuses the YouTube video player on watch pages to enable hotkeys instantly. | `1.0.1` |   [Install](https://github.com/Autapomorph/userscripts/releases/latest/download/yt-video-autofocus.user.js)   |
 | **PH localStorage Auto Populate** | Disables autoplay, sets quality to 1080p, and mutes volume via localStorage.               | `1.2.0` |    [Install](https://github.com/Autapomorph/userscripts/releases/latest/download/ph-localstorage.user.js)     |
 
 ---
