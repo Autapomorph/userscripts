@@ -43,7 +43,7 @@
 // @match https://ya.tm/*
 // ==/UserScript==
 
-function getSearchTerm(): string {
+function getSearchTerm() {
   const urlParams = new URLSearchParams(window.location.search);
   const queryFromUrl = urlParams.get('text') ?? urlParams.get('q');
   const input = document.querySelector<HTMLInputElement>(
@@ -53,7 +53,7 @@ function getSearchTerm(): string {
   return (queryFromUrl ?? queryFromInput ?? '').trim();
 }
 
-function findSearchEngineContainer(): HTMLElement | null {
+function findSearchEngineContainer() {
   const containerSelectors = [
     '.SerpFooter-LinksGroup_type_searchengines',
     '[class*="SerpFooter-LinksGroup_type_searchengines"]',
@@ -93,7 +93,7 @@ function findSearchEngineContainer(): HTMLElement | null {
   return null;
 }
 
-function addDdgLink(): void {
+function addDdgLink() {
   const urlPathname = window.location.pathname;
   if (!urlPathname.includes('/search')) {
     return;
