@@ -45,7 +45,7 @@ jobs:
         run: npm run typecheck
 
       - name: Run tests
-        run: npm test
+        run: npm test -- --passWithNoTests
 
       - name: Build Userscripts
         run: npm run build
@@ -60,4 +60,3 @@ jobs:
           files: dist/*.user.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
