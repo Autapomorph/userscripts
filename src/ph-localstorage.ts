@@ -3,7 +3,7 @@
 // @name:ru PH автозаполнение localStorage
 // @description Disables autoplay, sets quality to 1080p, mutes volume
 // @description:ru Отключает автовоспроизведение, устанавливает качество 1080p, заглушает звук
-// @version 1.2.0
+// @version 1.2.1
 // @run-at document_end
 // @match https://*.pornhub.com/*
 // @match https://*.pornhub.org/*
@@ -11,6 +11,7 @@
 
 interface PlayerItemValue {
   autoplay: boolean;
+  cinemaMode: boolean;
   quality: {
     auto: boolean;
     quality: number;
@@ -43,6 +44,7 @@ if (rawItem) {
 
 const playerItemValue: PlayerItemValue = {
   autoplay: false,
+  cinemaMode: true,
   quality: {
     auto: false,
     quality: 1080,
