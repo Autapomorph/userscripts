@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Yandex to DuckDuckGo
 // @name:ru Поиск DuckDuckGo на Яндексе
-// @description Places a button to search with DuckDuckGo on Yandex search page
+// @description Adds a DuckDuckGo search button directly into Yandex search results
 // @description:ru Добавляет кнопку поиска на DuckDuckGo к выдаче Яндекса
 // @version 2.1.3
 // @run-at document_end

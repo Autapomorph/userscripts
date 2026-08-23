@@ -6,11 +6,11 @@ Collection of high-quality Userscripts written in **TypeScript** for Tampermonke
 
 ## 📜 Available Userscripts
 
-| Userscript                        | Description                                                                                | Version |                                               Quick Install 🚀                                                |
-| :-------------------------------- | :----------------------------------------------------------------------------------------- | :-----: | :-----------------------------------------------------------------------------------------------------------: |
-| **Avoid Steam "Oops, Sorry!"**    | Redirects to target page avoiding Steam "Oops, Sorry!" age/region check error pages.       | `1.0.1` | [Install](https://github.com/Autapomorph/userscripts/releases/latest/download/avoid-steam-oops-sorry.user.js) |
-| **Yandex to DuckDuckGo**          | Adds a DuckDuckGo search button directly into Yandex search results.                       | `2.1.3` |       [Install](https://github.com/Autapomorph/userscripts/releases/latest/download/yandex-ddg.user.js)       |
-| **PH localStorage Auto Populate** | Disables autoplay, sets quality to 1080p, and mutes volume via localStorage.               | `1.2.1` |    [Install](https://github.com/Autapomorph/userscripts/releases/latest/download/ph-localstorage.user.js)     |
+| Userscript                         | Description                                                                                | Version |                                               Quick Install 🚀                                                |
+| :--------------------------------  | :----------------------------------------------------------------------------------------- | :-----: | :-----------------------------------------------------------------------------------------------------------: |
+| **Avoid Steam "Oops, Sorry!"**     | Redirects to target page avoiding Steam "Oops, Sorry!" region check error pages            | `1.0.1` | [Install](https://github.com/Autapomorph/userscripts/releases/latest/download/avoid-steam-oops-sorry.user.js) |
+| **PH localStorage Auto Populate**  | Disables autoplay, sets quality to 1080p, mutes volume                                     | `1.2.1` | [Install](https://github.com/Autapomorph/userscripts/releases/latest/download/ph-localstorage.user.js)        |
+| **Yandex to DuckDuckGo**           | Adds a DuckDuckGo search button directly into Yandex search results                        | `2.1.3` | [Install](https://github.com/Autapomorph/userscripts/releases/latest/download/yandex-ddg.user.js)             |
 
 ---
 
